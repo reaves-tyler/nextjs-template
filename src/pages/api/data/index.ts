@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { NextApiRequest } from 'next';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const handler = async (req: NextApiRequest, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
         const resp = await axios.get('http://api.covid19api.com/summary');
 

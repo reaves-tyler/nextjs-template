@@ -1,4 +1,5 @@
 // import { useSession } from 'next-auth/react';
+import { Card } from 'antd';
 import useSwr from 'swr';
 import { SiteMenu } from '../components/SiteMenu';
 
@@ -12,7 +13,13 @@ export default function Index() {
     return (
         <>
             <SiteMenu />
-            {JSON.stringify(data)}
+            {data?.Countries.map((item, i) => (
+                <>
+                    <Card title={item.Country}>
+                        <p>{Intl.NumberFormat().format(item.TotalConfirmed)}</p>
+                    </Card>
+                </>
+            ))}
         </>
     );
 }
