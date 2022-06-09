@@ -8,7 +8,10 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 export default function Index() {
     // const { data: session } = useSession();
 
-    const { data } = useSwr(`/api/data`, fetcher);
+    const { data, error } = useSwr(`/api/data`, fetcher);
+
+    if (error) return <div>failed to load</div>;
+    if (!data) return <div>loading...</div>;
 
     return (
         <>
